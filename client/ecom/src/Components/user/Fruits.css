@@ -1,0 +1,58 @@
+.fruits-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .fruits-container h1 {
+    text-align: center;
+    color: #2d6a4f;
+    margin-bottom: 30px;
+  }
+  
+  .fruit-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  
+  .fruit-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .fruit-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .fruit-card h3 {
+    margin: 10px 0 5px;
+    color: #333;
+  }
+  
+  .fruit-card p {
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .fruit-card button {
+    background-color: #40916c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .fruit-card button:hover {
+    background-color: #2d6a4f;
+  }
+  
+  

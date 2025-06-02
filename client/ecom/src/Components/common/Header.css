@@ -1,0 +1,156 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo styles */
+.logo h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.logo h2 a {
+  text-decoration: none;
+  color: #333333;
+}
+
+/* Navigation links */
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links ul li a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+  color: #007bff;
+}
+
+/* Search bar */
+.search-bar {
+  flex: 1;
+  margin: 0 1rem;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 20px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  border-color: #007bff;
+}
+
+/* Authentication buttons */
+.auth-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.auth-btn {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-btn.signup {
+  background-color: #28a745;
+}
+
+.auth-btn:hover {
+  background-color: #0056b3;
+}
+
+.auth-btn.signup:hover {
+  background-color: #218838;
+}
+
+/* Navigation icons */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-icon {
+  font-size: 1.5rem;
+  color: #333333;
+  transition: color 0.3s ease;
+}
+
+.nav-icon:hover {
+  color: #007bff;
+}
+
+.cart-count {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  position: relative;
+  top: -10px;
+  right: 10px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .Navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .auth-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-icons {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+}
