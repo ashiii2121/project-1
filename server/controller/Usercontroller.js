@@ -2,11 +2,18 @@ import User from '../model/Usermodel.js'
 import { transporter } from '../configue/Mailservice.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { config } from 'dotenv'
+
+// Load environment variables
+config()
 
 const secretKey = "mychoice"
 
 // In-memory store — temporary for development only
 let otpStore = {}
+
+// OTP expiration time (10 minutes)
+const OTP_EXPIRY_TIME = 10 * 60 * 1000
 
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString()
@@ -49,8 +56,21 @@ export const signUpHandler = async (req, res) => {
       return res.status(409).json({ error: "Email already registered" })
     }
 
-    if (otpStore[email] !== otp) {
-      return res.status(400).json({ error: "Invalid OTP" })
+    // Check if OTP exists and is valid
+    const storedOtpData = otpStore[email]
+    if (!storedOtpData) {
+      return res.status(400).json({ error: "OTP not found. Please request a new OTP." })
+    }
+
+    // Check if OTP has expired
+    if (Date.now() - storedOtpData.timestamp > OTP_EXPIRY_TIME) {
+      delete otpStore[email] // Clean up expired OTP
+      return res.status(400).json({ error: "OTP has expired. Please request a new OTP." })
+    }
+
+    // Check if OTP matches
+    if (storedOtpData.otp !== otp) {
+      return res.status(400).json({ error: "Invalid OTP. Please check and try again." })
     }
 
 
@@ -78,24 +98,54 @@ export const sendOTPhandler = async (req, res) => {
     }
 
     const otp = generateOTP()
-    otpStore[email] = otp
-
-    const mailOptions = {
-      from: 'ashiiik2121@gmail.com',
-
-      to: email,
-      subject: 'OTP from ShopEasy',
-      html: `<h2>Your OTP is <strong>${otp}</strong></h2>`
+    // Store OTP with timestamp for expiration
+    otpStore[email] = {
+      otp: otp,
+      timestamp: Date.now()
     }
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Email Error:', error)
-        return res.status(500).json({ error: 'Error sending email' })
-      }
-      console.log('Email sent:', info.response)
-      res.status(200).json({ message: 'OTP sent successfully' })
+    const mailOptions = {
+      from: process.env.NODEMAILER_EMAIL_ID,
+      to: email,
+      subject: 'OTP from ShopEasy',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #333; text-align: center;">ShopEasy OTP Verification</h2>
+          <p style="font-size: 16px; color: #666;">Hello,</p>
+          <p style="font-size: 16px; color: #666;">Your OTP for account verification is:</p>
+          <div style="text-align: center; margin: 20px 0;">
+            <span style="font-size: 32px; font-weight: bold; color: #007bff; background: #f8f9fa; padding: 10px 20px; border-radius: 5px; letter-spacing: 3px;">${otp}</span>
+          </div>
+          <p style="font-size: 14px; color: #999;">This OTP is valid for 10 minutes.</p>
+          <p style="font-size: 14px; color: #999;">If you didn't request this, please ignore this email.</p>
+        </div>
+      `
+    }
 
+    // Verify transporter configuration before sending
+    transporter.verify((error, success) => {
+      if (error) {
+        console.error('SMTP Configuration Error:', error)
+        return res.status(500).json({
+          error: 'Email service configuration error. Please check your email settings.'
+        })
+      }
+
+      // Send the email
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('Email Sending Error:', error)
+          return res.status(500).json({
+            error: 'Failed to send OTP. Please try again or check your email address.'
+          })
+        }
+        console.log('✅ Email sent successfully:', info.response)
+        console.log('📧 OTP sent to:', email)
+        res.status(200).json({
+          message: 'OTP sent successfully! Please check your email.',
+          email: email
+        })
+      })
     })
   } catch (error) {
     console.error(error)
