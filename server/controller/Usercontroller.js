@@ -348,3 +348,72 @@ export const getOTPStatus = async (req, res) => {
     res.status(500).json({ error: "Internal server error" })
   }
 }
+
+// 🛒 Add to Cart
+export const addToCartHandler = async (req, res) => {
+  try {
+    const { userId, product } = req.body;
+    if (!userId || !product) {
+      return res.status(400).json({ error: "User ID and product are required" });
+    }
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    // Check if product already in cart
+    const existing = user.cart.find(item => item.productId === product.productId);
+    if (existing) {
+      existing.quantity += product.quantity || 1;
+    } else {
+      user.cart.push({ ...product, quantity: product.quantity || 1 });
+    }
+    await user.save();
+    res.status(200).json({ message: "Product added to cart", cart: user.cart });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+// 🛒 Get Cart
+export const getCartHandler = async (req, res) => {
+  try {
+    const { userId } = req.query;
+    if (!userId) {
+      return res.status(400).json({ error: "User ID is required" });
+    }
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    res.status(200).json({ cart: user.cart });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+// 🛒 Checkout
+export const checkoutHandler = async (req, res) => {
+  try {
+    const { userId, address } = req.body;
+    if (!userId || !address) {
+      return res.status(400).json({ error: "User ID and address are required" });
+    }
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    if (!user.cart || user.cart.length === 0) {
+      return res.status(400).json({ error: "Cart is empty" });
+    }
+    const total = user.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    user.orders.push({ items: user.cart, total, address });
+    user.cart = [];
+    await user.save();
+    res.status(200).json({ message: "Order placed successfully", order: user.orders[user.orders.length - 1] });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}

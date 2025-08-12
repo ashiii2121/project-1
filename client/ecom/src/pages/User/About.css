@@ -1,44 +1,98 @@
+
+.about-bg {
+  background: linear-gradient(120deg, #e0e7ff 0%, #f0fcf4 100%);
+  min-height: 100vh;
+  padding: 0;
+}
+
 .about-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 24px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(60, 60, 120, 0.15);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #333;
+  backdrop-filter: blur(6px);
+  border: 1px solid #e0e7ff;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  color: #2d6a4f;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px #e0e7ff;
+}
+
+.about-hero p {
+  font-size: 1.3rem;
+  color: #40916c;
+  margin-bottom: 0;
+}
+
+.about-section {
+  margin-bottom: 36px;
+  background: rgba(240, 252, 244, 0.7);
+  border-radius: 14px;
+  padding: 24px 18px;
+  box-shadow: 0 2px 12px rgba(60, 60, 120, 0.08);
+}
+
+.about-section h2 {
+  color: #40916c;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.about-section p,
+.about-section ul {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.about-section ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.about-section li {
+  margin-bottom: 8px;
+  background: #e0e7ff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  color: #2d6a4f;
+  box-shadow: 0 1px 4px rgba(60, 60, 120, 0.07);
+  display: flex;
+  align-items: center;
+  font-size: 1.08rem;
+}
+
+@media (max-width: 700px) {
+  .about-container {
+    padding: 18px 4px;
+    border-radius: 10px;
   }
-  
-  .about-hero {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .about-hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #2d6a4f;
-  }
-  
+
   .about-section {
-    margin-bottom: 30px;
+    padding: 12px 6px;
   }
-  
-  .about-section h2 {
-    color: #40916c;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+
+  .about-hero h1 {
+    font-size: 2.1rem;
   }
-  
-  .about-section p,
-  .about-section ul {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-  
-  .about-section ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .about-section li {
-    margin-bottom: 8px;
-  }
-  
+}

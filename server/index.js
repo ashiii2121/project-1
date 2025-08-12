@@ -25,7 +25,7 @@ app.use(fileUpload())
 
 
 app.use('/', Userroutes)
-// app.use('/admin', adminRoutes)
+app.use('/admin', adminRoutes)
 
 app.listen(process.env.PORT, () => {
     console.log(`running server on http://localhost:${process.env.PORT}`);

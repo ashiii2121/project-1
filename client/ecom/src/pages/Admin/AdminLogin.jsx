@@ -1,18 +1,30 @@
 import React, { useState } from "react";
-import "./Loginpage.css";
+// import "./Loginpage.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (email === "admin@example.com" && password === "admin123") {
-      alert("Login successful!");
-      setError("");
-    } else {
-      setError("Invalid email or password.");
+    try {
+      const response = await axios.post("http://localhost:5000/admin", {
+        email,
+        password,
+      });
+      if (response.data.token) {
+        alert("Login successful!");
+        setError("");
+        navigate("/admin/dashboard");
+      } else {
+        setError("Login failed.");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Invalid email or password.");
     }
   };
 

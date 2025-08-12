@@ -9,24 +9,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 1.5rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  box-shadow: 0 4px 12px rgba(106, 17, 203, 0.08);
   flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-radius: 0 0 16px 16px;
 }
 
 /* Logo styles */
 .logo h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(37,117,252,0.12);
 }
 
 .logo h2 a {
   text-decoration: none;
-  color: #333333;
+  color: #fff;
+  transition: color 0.3s;
 }
 
 /* Navigation links */
@@ -40,13 +46,17 @@
 
 .nav-links ul li a {
   text-decoration: none;
-  color: #333333;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav-links ul li a:hover {
-  color: #007bff;
+  background: rgba(255,255,255,0.15);
+  color: #ffd700;
 }
 
 /* Search bar */
@@ -58,16 +68,18 @@
 
 .search-bar input {
   width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid #cccccc;
-  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 30px;
   outline: none;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  background: #f4f6fa;
+  box-shadow: 0 2px 8px rgba(37,117,252,0.08);
+  transition: box-shadow 0.3s;
 }
 
 .search-bar input:focus {
-  border-color: #007bff;
+  box-shadow: 0 4px 16px rgba(37,117,252,0.18);
 }
 
 /* Authentication buttons */
@@ -77,24 +89,29 @@
 }
 
 .auth-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.4rem;
   text-decoration: none;
-  color: #ffffff;
-  background-color: #007bff;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
+  color: #fff;
+  background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+  border-radius: 30px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(106,17,203,0.08);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .auth-btn.signup {
-  background-color: #28a745;
+  background: linear-gradient(90deg, #28a745 0%, #6a11cb 100%);
 }
 
 .auth-btn:hover {
-  background-color: #0056b3;
+  background: #ffd700;
+  color: #2575fc;
+  box-shadow: 0 4px 16px rgba(255,215,0,0.18);
 }
 
 .auth-btn.signup:hover {
-  background-color: #218838;
+  background: #ffd700;
+  color: #28a745;
 }
 
 /* Navigation icons */
@@ -105,24 +122,26 @@
 }
 
 .nav-icon {
-  font-size: 1.5rem;
-  color: #333333;
-  transition: color 0.3s ease;
+  font-size: 2rem;
+  color: #fff;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .nav-icon:hover {
-  color: #007bff;
+  color: #ffd700;
+  transform: scale(1.15);
 }
 
 .cart-count {
   background-color: #ff0000;
-  color: #ffffff;
+  color: #fff;
   border-radius: 50%;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85rem;
   position: relative;
-  top: -10px;
-  right: 10px;
+  top: -12px;
+  right: 12px;
+  box-shadow: 0 2px 8px rgba(255,0,0,0.12);
 }
 
 /* Responsive styles */
@@ -130,6 +149,12 @@
   .Navbar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 1rem;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .logo h2 {
+    font-size: 1.5rem;
   }
 
   .nav-links ul {
