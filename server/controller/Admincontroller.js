@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@shopeasy.com';
-const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || bcrypt.hashSync('admin123', 10);
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'username';
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || bcrypt.hashSync('password', 10);
 
 export const adminLoginHandler = async (req, res) => {
     const { email, password } = req.body;
