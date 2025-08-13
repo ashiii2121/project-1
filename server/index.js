@@ -2,7 +2,7 @@ import express from 'express'
 const app = express()
 import cors from 'cors'
 import './configue/db.js'
-// import adminRoutes from './routes/adminRoutes.js'
+import adminRoutes from './routes/Adminroutes.js'
 import Userroutes from './routes/Userroutes.js'
 import { config } from 'dotenv'
 import fileUpload from 'express-fileupload'
@@ -22,7 +22,6 @@ app.use(cookieParser())
 app.use(cors(corsOptions))
 app.use(express.static("public"))
 app.use(fileUpload())
-
 
 app.use('/', Userroutes)
 app.use('/admin', adminRoutes)

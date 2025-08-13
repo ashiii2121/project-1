@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Adminlayout from "../Layout/Adminlayout";
 import Reports from "../pages/Admin/Reports";
@@ -13,11 +13,10 @@ const Settings = React.lazy(() => import("../pages/Admin/Settings"));
 
 function Adminroutes() {
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route path="/admin/login" element={<AdminLogin />} />
-
-        <Route path="/admin/*" element={<Adminlayout />}>
+        <Route path="login" element={<AdminLogin />} />
+        <Route path="*" element={<Adminlayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
@@ -25,11 +24,10 @@ function Adminroutes() {
           <Route path="inventory" element={<Inventory />} />
           <Route path="reports" element={<Reports />} />
           <Route path="settings" element={<Settings />} />
-
           <Route index element={<Navigate to="dashboard" replace />} />
         </Route>
       </Routes>
-    </div>
+    </Suspense>
   );
 }
 
