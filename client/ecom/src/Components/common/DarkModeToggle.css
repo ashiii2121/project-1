@@ -1,0 +1,64 @@
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-track {
+    width: 60px;
+    height: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.toggle-track.dark {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-thumb {
+    width: 26px;
+    height: 26px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-track.dark .toggle-thumb {
+    left: 32px;
+    background: #1f2937;
+}
+
+.toggle-thumb svg {
+    font-size: 0.9rem;
+    color: #fbbf24;
+}
+
+.toggle-track.dark .toggle-thumb svg {
+    color: #fbbf24;
+}
+
+.dark-mode-toggle:hover .toggle-track {
+    transform: scale(1.05);
+}
+
+.dark-mode-toggle:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 4px;
+    border-radius: 50px;
+}
