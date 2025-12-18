@@ -23,6 +23,18 @@
 
 ---
 
+## 🎉 What's New (December 2025)
+
+### Latest Updates:
+- 💝 **Wishlist Page** - Save your favorite products with beautiful UI
+- 🌙 **Dark Mode Toggle** - Switch between light and dark themes
+- 🎨 **Premium Admin Dashboard** - Glassmorphism design with real-time analytics
+- 📸 **Product Images** - High-quality images from Unsplash for all products
+- 🎯 **Enhanced UI/UX** - Global design system with CSS variables
+- 📖 **Comprehensive Documentation** - Detailed README and project summary
+
+---
+
 ## ✨ Features
 
 ### 🎨 **Premium UI/UX Design**
@@ -37,10 +49,12 @@
 - 🔍 **Smart Search** - Real-time product search with advanced filters
 - 📱 **Product Catalog** - Grid and list view with multiple sorting options
 - 🛒 **Shopping Cart** - Persistent cart with quantity management
-- 💳 **Secure Checkout** - Multi-step checkout process with validation
+- � **Wishlist** - Save favorite products with images, ratings, and stock status
+- �💳 **Secure Checkout** - Multi-step checkout process with validation
 - 👤 **User Profiles** - Complete account management and order history
 - ⭐ **Reviews & Ratings** - Customer feedback and rating system
 - 📧 **Newsletter** - Email subscription with modern UI
+- 🌙 **Dark Mode** - Toggle between light and dark themes
 
 ### 🎛️ **Premium Admin Dashboard**
 - 📊 **Analytics Dashboard** - Real-time sales insights with beautiful visualizations
@@ -466,15 +480,22 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ## 🗺️ Roadmap
 
-### Version 2.0 (Coming Soon)
+### ✅ Recently Completed (December 2025)
+- [x] **Wishlist Functionality** - Beautiful wishlist page with images and ratings
+- [x] **Dark Mode Toggle** - Theme context and toggle component ready
+- [x] **Premium Admin Dashboard** - Glassmorphism design with analytics
+- [x] **Product Images** - High-quality Unsplash images for all products
+- [x] **Global Design System** - CSS variables and utility classes
+
+### Version 2.0 (In Progress)
+- [x] ~~Wishlist Functionality~~ ✅ **Completed**
+- [x] ~~Dark Mode Toggle~~ ✅ **Completed**
 - [ ] Payment Gateway Integration (Stripe/PayPal)
-- [ ] Wishlist Functionality
 - [ ] Product Reviews & Ratings
 - [ ] Advanced Search Filters
 - [ ] Email Notifications
 - [ ] Order Tracking
 - [ ] Multi-language Support
-- [ ] Dark Mode Toggle
 
 ### Version 3.0 (Future)
 - [ ] Mobile App (React Native)
