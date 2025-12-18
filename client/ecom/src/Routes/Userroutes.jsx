@@ -14,6 +14,7 @@ import Login from "../pages/User/Login";
 import SignupForm from "../pages/User/Signup";
 import Profile from "../pages/User/Profile";
 import ProductDetail from "../pages/User/Productdetails";
+import Wishlist from "../pages/User/Wishlist";
 
 function Userroutes() {
   return (
@@ -23,6 +24,7 @@ function Userroutes() {
         <Route path="order" element={<Order />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="wishlist" element={<Wishlist />} />
         <Route path="category" element={<Category />} />
         <Route path="about" element={<Aboutus />} />
         <Route path="fruits" element={<Fruits />} />

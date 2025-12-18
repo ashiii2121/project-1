@@ -8,120 +8,105 @@ const products = [
     name: "Fresh Carrots",
     category: "Vegetables",
     price: 60,
-    image:
-      "https://images.pexels.com/photos/1431335/pexels-photo-1431335.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=400&fit=crop",
   },
   {
     id: 2,
     name: "Red Apples",
     category: "Fruits",
     price: 199,
-    image:
-      "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=400&fit=crop",
   },
   {
     id: 3,
     name: "Chicken Wings",
     category: "Meat",
     price: 140,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=400&h=400&fit=crop",
   },
   {
     id: 4,
     name: "Broccoli",
     category: "Vegetables",
     price: 80,
-    image:
-      "https://images.pexels.com/photos/1431336/pexels-photo-1431336.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&h=400&fit=crop",
   },
   {
     id: 5,
     name: "Bananas",
     category: "Fruits",
     price: 50,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=400&fit=crop",
   },
   {
     id: 6,
     name: "Salmon Fillet",
     category: "Meat",
     price: 350,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=400&h=400&fit=crop",
   },
   {
     id: 7,
     name: "Tomatoes",
     category: "Vegetables",
     price: 70,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1546470427-227e9c4d6e6c?w=400&h=400&fit=crop",
   },
   {
     id: 8,
     name: "Green Grapes",
     category: "Fruits",
     price: 120,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1599819177626-c0d3a6fd1d4b?w=400&h=400&fit=crop",
   },
   {
     id: 9,
     name: "Eggs",
     category: "Meat",
     price: 90,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=400&h=400&fit=crop",
   },
   {
     id: 10,
     name: "Spinach",
     category: "Vegetables",
     price: 40,
-    image:
-      "https://images.pexels.com/photos/1431336/pexels-photo-1431336.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop",
   },
   {
     id: 11,
     name: "Mango",
     category: "Fruits",
     price: 100,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&h=400&fit=crop",
   },
   {
     id: 12,
     name: "Beef Steak",
     category: "Meat",
     price: 500,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=400&h=400&fit=crop",
   },
   {
     id: 13,
     name: "Cucumber",
     category: "Vegetables",
     price: 70,
-    image:
-      "https://images.pexels.com/photos/1431336/pexels-photo-1431336.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=400&h=400&fit=crop",
   },
   {
     id: 14,
     name: "Papaya",
     category: "Fruits",
     price: 45,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1617112848923-cc2234396a8d?w=400&h=400&fit=crop",
   },
   {
     id: 15,
     name: "Mutton Chops",
     category: "Meat",
     price: 800,
-    image:
-      "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg?auto=compress&w=400&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=400&h=400&fit=crop",
   },
 ];
 
@@ -295,12 +280,12 @@ function Hero({ addToCart }) {
                 transition: "background 0.3s",
               }}
               onMouseOver={(e) =>
-                (e.currentTarget.style.background =
-                  "linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%)")
+              (e.currentTarget.style.background =
+                "linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%)")
               }
               onMouseOut={(e) =>
-                (e.currentTarget.style.background =
-                  "linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%)")
+              (e.currentTarget.style.background =
+                "linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%)")
               }
               onClick={() => handleAddToCart(product)}
             >

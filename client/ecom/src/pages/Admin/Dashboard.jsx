@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaBoxOpen,
   FaUsers,
@@ -9,242 +10,299 @@ import {
   FaBell,
   FaSearch,
   FaUserCircle,
+  FaArrowUp,
+  FaArrowDown,
+  FaDollarSign,
+  FaShoppingBag,
+  FaChartLine,
 } from "react-icons/fa";
+import "./Dashboard.css";
 
 const menuItems = [
   {
     label: "Products",
     icon: <FaBoxOpen />,
     path: "/admin/products",
-    color: "#4f8cff",
+    color: "#667eea",
+    gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
   },
   {
     label: "Customers",
     icon: <FaUsers />,
     path: "/admin/customers",
-    color: "#34c759",
+    color: "#f093fb",
+    gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
   },
   {
     label: "Orders",
     icon: <FaShoppingCart />,
     path: "/admin/orders",
-    color: "#ff9500",
+    color: "#4facfe",
+    gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
   },
   {
     label: "Reports",
     icon: <FaChartBar />,
     path: "/admin/reports",
-    color: "#ff3b30",
+    color: "#43e97b",
+    gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
   },
   {
     label: "Inventory",
     icon: <FaWarehouse />,
     path: "/admin/inventory",
-    color: "#a259ff",
+    color: "#fa709a",
+    gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
   },
   {
     label: "Settings",
     icon: <FaCog />,
     path: "/admin/settings",
-    color: "#232b43",
+    color: "#30cfd0",
+    gradient: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)",
   },
 ];
 
-const metrics = [
-  { label: "Sales", value: "$12,340", color: "#4f8cff" },
-  { label: "Orders", value: "1,234", color: "#34c759" },
-  { label: "Customers", value: "567", color: "#ff9500" },
-  { label: "Inventory Alerts", value: "3", color: "#ff3b30" },
-];
-
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const [animateCards, setAnimateCards] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setAnimateCards(true), 100);
+  }, []);
+
+  const metrics = [
+    {
+      label: "Total Sales",
+      value: "$45,231",
+      change: "+12.5%",
+      trend: "up",
+      icon: <FaDollarSign />,
+      gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      color: "#667eea",
+    },
+    {
+      label: "Total Orders",
+      value: "1,234",
+      change: "+8.2%",
+      trend: "up",
+      icon: <FaShoppingBag />,
+      gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+      color: "#f093fb",
+    },
+    {
+      label: "Customers",
+      value: "567",
+      change: "+15.3%",
+      trend: "up",
+      icon: <FaUsers />,
+      gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+      color: "#4facfe",
+    },
+    {
+      label: "Revenue",
+      value: "$89,432",
+      change: "+23.1%",
+      trend: "up",
+      icon: <FaChartLine />,
+      gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+      color: "#43e97b",
+    },
+  ];
+
+  const recentOrders = [
+    { id: "#ORD-001", customer: "John Doe", amount: "$234", status: "Completed", date: "Dec 18, 2025" },
+    { id: "#ORD-002", customer: "Jane Smith", amount: "$567", status: "Pending", date: "Dec 18, 2025" },
+    { id: "#ORD-003", customer: "Mike Johnson", amount: "$123", status: "Processing", date: "Dec 17, 2025" },
+    { id: "#ORD-004", customer: "Sarah Williams", amount: "$890", status: "Completed", date: "Dec 17, 2025" },
+    { id: "#ORD-005", customer: "Tom Brown", amount: "$456", status: "Shipped", date: "Dec 16, 2025" },
+  ];
+
+  const topProducts = [
+    { name: "Fresh Carrots", sales: 234, revenue: "$1,234", trend: "+12%" },
+    { name: "Red Apples", sales: 189, revenue: "$987", trend: "+8%" },
+    { name: "Chicken Wings", sales: 156, revenue: "$2,345", trend: "+15%" },
+    { name: "Broccoli", sales: 145, revenue: "$876", trend: "+5%" },
+  ];
+
   return (
-    <div style={{ minHeight: "100vh", background: "#f4f6fa" }}>
+    <div className="admin-dashboard">
+      {/* Animated Background */}
+      <div className="dashboard-bg-animation"></div>
+
       {/* Top Header */}
-      <header
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "1.5rem 2rem 1rem 2rem",
-          background: "#fff",
-          borderBottom: "1px solid #e5e7eb",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ position: "relative" }}>
-            <FaSearch
-              style={{
-                position: "absolute",
-                left: 12,
-                top: 10,
-                color: "#b0b7c3",
-              }}
-            />
+      <header className="dashboard-header">
+        <div className="header-left">
+          <h1 className="dashboard-title">
+            <FaChartBar className="title-icon" />
+            Admin Dashboard
+          </h1>
+          <div className="search-container">
+            <FaSearch className="search-icon" />
             <input
               type="text"
-              placeholder="Search..."
-              style={{
-                padding: "0.5rem 0.5rem 0.5rem 2.5rem",
-                borderRadius: 8,
-                border: "1px solid #e5e7eb",
-                background: "#f4f6fa",
-                fontSize: 15,
-                outline: "none",
-                width: 220,
-              }}
+              placeholder="Search anything..."
+              className="search-input"
             />
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <FaBell
-            style={{ fontSize: 22, color: "#4f8cff", cursor: "pointer" }}
-          />
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              cursor: "pointer",
-            }}
-          >
-            <FaUserCircle style={{ fontSize: 28, color: "#232b43" }} />
-            <span style={{ fontWeight: 500, color: "#232b43" }}>Admin</span>
+        <div className="header-right">
+          <div className="notification-bell">
+            <FaBell />
+            <span className="notification-badge">3</span>
+          </div>
+          <div className="admin-profile">
+            <FaUserCircle className="profile-icon" />
+            <div className="profile-info">
+              <span className="profile-name">Admin</span>
+              <span className="profile-role">Administrator</span>
+            </div>
           </div>
         </div>
       </header>
+
       {/* Metrics Cards */}
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: 24,
-          padding: "2rem",
-        }}
-      >
-        {metrics.map((metric) => (
+      <section className="metrics-section">
+        {metrics.map((metric, index) => (
           <div
             key={metric.label}
+            className={`metric-card ${animateCards ? "animate" : ""}`}
             style={{
-              background: "#fff",
-              borderRadius: 14,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-              padding: "1.5rem 1.25rem",
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-              borderLeft: `5px solid ${metric.color}`,
+              animationDelay: `${index * 0.1}s`,
+              background: metric.gradient,
             }}
           >
-            <span style={{ color: "#7b7f8a", fontSize: 15 }}>
-              {metric.label}
-            </span>
-            <span
-              style={{ fontWeight: 700, fontSize: 28, color: metric.color }}
-            >
-              {metric.value}
-            </span>
+            <div className="metric-icon-wrapper">
+              <div className="metric-icon">{metric.icon}</div>
+            </div>
+            <div className="metric-content">
+              <span className="metric-label">{metric.label}</span>
+              <h2 className="metric-value">{metric.value}</h2>
+              <div className="metric-change">
+                {metric.trend === "up" ? (
+                  <FaArrowUp className="trend-icon up" />
+                ) : (
+                  <FaArrowDown className="trend-icon down" />
+                )}
+                <span className={`change-text ${metric.trend}`}>
+                  {metric.change}
+                </span>
+                <span className="change-period">vs last month</span>
+              </div>
+            </div>
           </div>
         ))}
       </section>
-      {/* Analytics Charts Placeholder */}
-      <section
-        style={{
-          padding: "0 2rem 2rem 2rem",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 24,
-        }}
-      >
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 14,
-            minHeight: 260,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#b0b7c3",
-            fontSize: 18,
-          }}
-        >
-          [Sales Chart Placeholder]
+
+      {/* Charts and Analytics */}
+      <section className="analytics-section">
+        <div className="chart-card">
+          <div className="card-header">
+            <h3>Sales Overview</h3>
+            <select className="time-filter">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last 3 months</option>
+            </select>
+          </div>
+          <div className="chart-placeholder">
+            <FaChartLine className="chart-icon" />
+            <div className="chart-bars">
+              <div className="bar" style={{ height: "60%" }}></div>
+              <div className="bar" style={{ height: "80%" }}></div>
+              <div className="bar" style={{ height: "45%" }}></div>
+              <div className="bar" style={{ height: "90%" }}></div>
+              <div className="bar" style={{ height: "70%" }}></div>
+              <div className="bar" style={{ height: "85%" }}></div>
+              <div className="bar" style={{ height: "95%" }}></div>
+            </div>
+          </div>
         </div>
-        <div
-          style={{
-            background: "#fff",
-            borderRadius: 14,
-            minHeight: 260,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#b0b7c3",
-            fontSize: 18,
-          }}
-        >
-          [Orders Chart Placeholder]
+
+        <div className="chart-card">
+          <div className="card-header">
+            <h3>Top Products</h3>
+            <button className="view-all-btn">View All</button>
+          </div>
+          <div className="top-products-list">
+            {topProducts.map((product, index) => (
+              <div key={index} className="product-item">
+                <div className="product-info">
+                  <span className="product-rank">#{index + 1}</span>
+                  <div>
+                    <p className="product-name">{product.name}</p>
+                    <p className="product-sales">{product.sales} sales</p>
+                  </div>
+                </div>
+                <div className="product-stats">
+                  <span className="product-revenue">{product.revenue}</span>
+                  <span className="product-trend">{product.trend}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
-      {/* Attractive Menu Bar */}
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 32,
-          padding: "1.5rem 2rem 0.5rem 2rem",
-          background: "#fff",
-          borderBottom: "1px solid #e5e7eb",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
-          borderRadius: "0 0 16px 16px",
-        }}
-      >
-        {/* Dashboard Menu List */}
-        <ul
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 28,
-            listStyle: "none",
-            padding: "1.5rem 2rem 0.5rem 2rem",
-            margin: 0,
-            background: "#fff",
-            borderBottom: "1px solid #e5e7eb",
-            borderRadius: "0 0 16px 16px",
-          }}
-        >
-          {menuItems.map((item) => (
-            <li
+
+      {/* Recent Orders */}
+      <section className="recent-orders-section">
+        <div className="section-header">
+          <h3>Recent Orders</h3>
+          <button className="view-all-btn" onClick={() => navigate("/admin/orders")}>
+            View All Orders
+          </button>
+        </div>
+        <div className="orders-table-wrapper">
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recentOrders.map((order) => (
+                <tr key={order.id}>
+                  <td className="order-id">{order.id}</td>
+                  <td>{order.customer}</td>
+                  <td className="order-amount">{order.amount}</td>
+                  <td>
+                    <span className={`status-badge ${order.status.toLowerCase()}`}>
+                      {order.status}
+                    </span>
+                  </td>
+                  <td className="order-date">{order.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Navigation Menu */}
+      <nav className="dashboard-nav">
+        <div className="nav-container">
+          {menuItems.map((item, index) => (
+            <div
               key={item.label}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "0.6rem 1.2rem",
-                borderRadius: 10,
-                background: "#f4f6fa",
-                color: item.color,
-                fontWeight: 600,
-                fontSize: 16,
-                cursor: "pointer",
-                boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
-                transition: "background 0.2s, color 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = item.color;
-                e.currentTarget.style.color = "#fff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#f4f6fa";
-                e.currentTarget.style.color = item.color;
-              }}
+              className="nav-item"
+              style={{ animationDelay: `${index * 0.05}s` }}
+              onClick={() => navigate(item.path)}
             >
-              {item.icon}
-              <span>{item.label}</span>
-            </li>
+              <div
+                className="nav-icon-wrapper"
+                style={{ background: item.gradient }}
+              >
+                {item.icon}
+              </div>
+              <span className="nav-label">{item.label}</span>
+              <div className="nav-hover-effect" style={{ background: item.gradient }}></div>
+            </div>
           ))}
-        </ul>
+        </div>
       </nav>
     </div>
   );
