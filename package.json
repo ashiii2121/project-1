@@ -1,0 +1,25 @@
+{
+    "name": "shopeasy",
+    "version": "1.0.0",
+    "description": "ShopEasy - E-commerce Platform",
+    "private": true,
+    "scripts": {
+        "install:client": "cd client/ecom && npm install",
+        "install:server": "cd server && npm install",
+        "build": "cd client/ecom && npm install && npm run build",
+        "dev:client": "cd client/ecom && npm run dev",
+        "dev:server": "cd server && npm run dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ashiii2121/project-1"
+    },
+    "keywords": [
+        "ecommerce",
+        "react",
+        "vite",
+        "nodejs"
+    ],
+    "author": "",
+    "license": "ISC"
+}
